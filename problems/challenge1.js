@@ -23,7 +23,7 @@ if mid is 0 take right
  ^
 grab index and subtract out from len
 
-Psuedocode
+Pseudocode
 --------------------------------------------------------------------------------
 
 initialize lenOfOne
@@ -44,8 +44,6 @@ return len - mid
 function SortedBitArray(arr) {
   let [left, right, index] = [0, arr.length - 1, Infinity];
 
-  //console.log(left, right);
-
   while (left <= right) {
     if (left === right && arr[left] === 0) return 0;
 
@@ -60,10 +58,11 @@ function SortedBitArray(arr) {
       left = mid + 1
     };
   }
+
   return arr.length - index;
 }
 
 let arr = [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1];
-let arr1 = [0, 0, 1, 1];
+let arr1 =[0,0,0,0,0,0]
 console.log(SortedBitArray(arr));
 console.log(SortedBitArray(arr1));
