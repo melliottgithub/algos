@@ -57,13 +57,56 @@ Diagramming
 
 //Code 
 function latticePaths(row, col) {
+  const cache = {};
+  let key = row + '_' + col;
+  if (key in cache) return cache[key];
   if (row < 0 || col < 0) return 0;
   if (row === 0 && row === 0) return 1;
-  
+
+
   // left paths
   const left = latticePaths(row, col - 1);
   // up paths
   const up = latticePaths(row - 1, col);
-  
-  return left + up;
+  cache[key] = left + up;
+
+
+  return cache[row + '_' + col];
 }
+/* 
+
+                                 row,col
+                                  (2,2)
+              left    /                          \ up
+                    2,1                          1,2
+        <  /                 \ ^
+         2,0                 1,1 
+  < /            \ ^
+  2,-1           1,0
+             </      \ ^ 
+            1,-1     0,0  return 1
+
+           row -1  -2  -3     0  1  2  3
+column --------------------------------------
+       0                   |  1  1  1  1      
+       1                   |          
+       2                   |                  
+       3                   |            
+       4                   |
+       
+       
+*/
+console.log(latticePaths(3, 3))
+
+function tabulation(m, n) {
+  const table = new Array(n + 1).fill(1);
+
+  for (let i = 0; i < m; i++) {
+    for (let j = 1; j < table.length; j++) {
+      table[j] = table[j] + table[j - 1];
+    }
+  }
+
+  return table[n];
+}
+console.log(tabulation(3, 3))
