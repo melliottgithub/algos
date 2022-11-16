@@ -6,8 +6,8 @@ in non-decreasing order.
 Understanding
 ----------------------------------------------------------------
 
-Time: 
-Space: 
+Time: O(n)
+Space: O(n)
 
 I/O
 a= [1,2,3]
